@@ -1,0 +1,19 @@
+{
+  "name": "@protecx/js",
+  "version": "1.0.0",
+  "description": "ProtecX JavaScript SDK",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "auth",
+    "sdk",
+    "protecx"
+  ],
+  "license": "MIT"
+}
