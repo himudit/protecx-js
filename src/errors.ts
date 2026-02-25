@@ -5,6 +5,7 @@ export type ProtecXErrorCode =
     | "AUTHENTICATION_ERROR"
     | "VALIDATION_ERROR"
     | "RATE_LIMIT_ERROR"
+    | "EXPONENTIAL_BACKOFF_ERROR"
     | "API_ERROR"
     | "UNKNOWN_ERROR";
 
@@ -89,6 +90,8 @@ export class ProtecXError extends Error {
                 errorCode = "AUTHENTICATION_ERROR";
             } else if (status === 429) {
                 errorCode = "RATE_LIMIT_ERROR";
+            } else if (status === 400) {
+                errorCode = "EXPONENTIAL_BACKOFF_ERROR";
             }
         }
 
