@@ -28,6 +28,14 @@ export class ProtecX {
     async login(params: LoginParams) {
         return this.auth.login(params);
     }
+
+    async logout() {
+        return this.auth.logout();
+    }
+
+    async profile() {
+        return this.auth.profile();
+    }
 }
 
 /**
