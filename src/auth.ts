@@ -16,9 +16,6 @@ export class Auth {
         return response;
     }
 
-    async register(params: RegisterParams): Promise<AuthResponse> {
-        return this.signup(params);
-    }
 
     async login(params: LoginParams): Promise<AuthResponse> {
         const response = await this.http.post<AuthResponse>("/iam/login", params);
@@ -29,11 +26,24 @@ export class Auth {
     }
 
     async logout(): Promise<void> {
-        try {
-            await this.http.post("/iam/logout");
-        } finally {
-            this.tokenManager.clear();
-        }
+        const refreshToken = this.tokenManager.getRefreshTokenInternal();
+
+        await this.http.post("/iam/logout", {}, {
+            headers: refreshToken
+                ? { Authorization: `Bearer ${refreshToken}` }
+                : {}
+        });
+        this.tokenManager.clear();
+    }
+
+    async profile() {
+        const refreshToken = this.tokenManager.getRefreshTokenInternal();
+
+        return this.http.get("/iam/profile", {
+            headers: refreshToken
+                ? { Authorization: `Bearer ${refreshToken}` }
+                : {}
+        });
     }
 
     get currentUser() {
