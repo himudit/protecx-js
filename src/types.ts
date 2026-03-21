@@ -36,3 +36,7 @@ export interface AuthResponse {
     expiresIn?: number;
 }
 
+export interface RefreshParams {
+    refreshToken: string;
+}
+
