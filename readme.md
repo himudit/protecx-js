@@ -1,84 +1,148 @@
-{
-    "success": false,
-    "message": "Signup failed",
-    "data": {
-        "error": "Invalid API key or ProjectId"
-    }
-}
+# ProtecX-JS 🔐
 
-{
-    "success": false,
-    "message": "Signup failed",
-    "data": {
-        "errors": {
-            "name": "is required",
-            "password": "must be at least 6 characters"
-        }
-    }
-}
+[![Banner](protecx_banner_1774420591959.png)](https://github.com/himudit/protecx-js)
 
-{
-    "success": false,
-    "message": "Signup failed",
-    "data": {
-        "errors": {
-            "email": "must be a valid email",
-            "name": "is required",
-            "password": "must be at least 6 characters"
-        }
-    }
-}
+**ProtecX-JS** is a powerful, lightweight JavaScript SDK for both client-side and server-side authentication. It simplifies secure user signups, logins, and profile management with built-in token rotation, automatic refresh logic, and robust verification middleware.
 
-{
-    "success": false,
-    "message": "Signup failed",
-    "data": {
-        "errors": {
-            "email": "must be a valid email",
-            "password": "must be at least 6 characters"
-        }
-    }
-}
+---
 
-{
-    "success": false,
-    "message": "Signup failed",
-    "data": {
-        "errors": {
-            "password": "must be at least 6 characters"
-        }
-    }
-}
+## 🚀 Features
 
-{
-    "success": false,
-    "message": "Signup failed",
-    "data": {
-        "error": "email already exists in this project"
-    }
-}
+- **🛡️ Secure Auth**: Full support for JWT-based authentication using RS256 algorithms.
+- **🔄 Auto-Refresh**: Seamlessly handles token expiration and rotation using refresh tokens.
+- **⚙️ Multi-Environment**: Dedicated implementations for both Client (Browsers/Universal) and Server (Node.js).
+- **🛠️ Flexible Config**: Easy setup with customizable base URLs, project IDs, and API keys.
+- **🚀 One-Step Middleware**: Ready-made Express-style middleware for fast server-side protection.
 
-{
-    "success": false,
-    "message": "Signup failed",
-    "data": {
-        "error": "Rate limit exceeded"
-    }
-}
+---
 
-{
-    "success": true,
-    "message": "User created successfully",
-    "data": {
-        "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2U2NTAxNS0zNjg5LTQyODQtODk1My0zMjEyNTdjM2IzYjIiLCJlbWFpbCI6InQyQGdtYWlsLmNvbSIsInJvbGUiOiJNRU1CRVIiLCJ0b2tlblZlcnNpb24iOjAsInN1YiI6IjUzZTY1MDE1LTM2ODktNDI4NC04OTUzLTMyMTI1N2MzYjNiMiIsImV4cCI6MTc3MTk0Nzg0MywiaWF0IjoxNzcxOTQ2OTQzfQ.Um_TZNgNaXYufSXybCKiBt2mHAk9lXlcD8EyKFjIDc5_Au1uqxVDzjI2LFprM94YVPM6FHZghCKh5h9EW9T4gx2yGkuVYXxjJdxOLevcZa-F2O2OCRTcd7lYLE-FMzAWgaS67S6uFpUmzpI7hNW-41qDLhZ36tybkkZXAvRdo3bdsPDNr7BN0N_HNVsPEYxCScBH2UC5sOJG7kcr99vDUUKS1hc8Diqi3o1ivrBgv3DSuQxkoFt72ZKpAb7tt7NA5rEUPQ4STYpSliAY8wu3NaBtl6zYO6PjdbVkHOzwGuR9TUaNc-_6QRW6Wd8FIVpVV0u3Emlwi1h6CPUZU7ZmKw",
-        "refreshToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2U2NTAxNS0zNjg5LTQyODQtODk1My0zMjEyNTdjM2IzYjIiLCJlbWFpbCI6IiIsInJvbGUiOiIiLCJ0b2tlblZlcnNpb24iOjAsInN1YiI6IjUzZTY1MDE1LTM2ODktNDI4NC04OTUzLTMyMTI1N2MzYjNiMiIsImV4cCI6MTc3MjU1MTc0MywiaWF0IjoxNzcxOTQ2OTQzfQ.gS98ml3OP9qNClZ9FS4cbwDplZl7pYLgd8mAtqE5agcjvW_yNZ6MXqruoY_u7sk7K7q9hulud53Tmpg0ScfqzUGC16J7RMIsZoZhVuoNVueERaMMSmr4Tj_JaMh3kTR2tLDes7ilNHwdSOA7GwSXbbDEsILxVBBVz2YdDVPh4MidG7GtMcPZfPZOup40XKTQPz2Mu4juFwhXBKaEZzIuoTym0VK1R3yEWo8_0zFvjVNz0JkLs9tN7xrsXR7SVQ9QEPjEaAaTj-4XQQltcT9WgKaQlPM0lUXLu6S-JcM-AvdZvqrsASWMEPG86fT084lqtvEzsf23OU9XWm8OkonydA",
-        "user": {
-            "id": "53e65015-3689-4284-8953-321257c3b3b2",
-            "name": "t2",
-            "email": "t2@gmail.com",
-            "role": "MEMBER",
-            "isVerified": false,
-            "lastLoginAt": "2026-02-24T15:29:03.013611276Z"
-        }
-    }
+## 📦 Installation
+
+To get started, install the package using your favorite package manager:
+
+```bash
+npm install @protecx/js
+# or
+yarn add @protecx/js
+# or
+pnpm add @protecx/js
+```
+
+---
+
+## 🧑‍💻 Client SDK Usage
+
+The client SDK is designed to handle all aspects of user authentication on the frontend.
+
+### Initialization
+
+```javascript
+import { ProtecXClient } from '@protecx/js';
+
+const protecx = new ProtecXClient({
+  baseUrl: 'https://api.protecx.io', // Your ProtecX base URL
+  projectId: 'your_project_id',
+  apiKey: 'your_api_key',
+  persistTokens: true // (Optional) Saves tokens to localStorage
+});
+```
+
+### Signup & Login
+
+```javascript
+// Sign up a new user
+const newUser = await protecx.signup({
+  email: 'user@example.com',
+  password: 'secure_password',
+  name: 'John Doe'
+});
+
+// Log in an existing user
+const session = await protecx.login({
+  email: 'user@example.com',
+  password: 'secure_password'
+});
+
+console.log('Logged in as:', session.user.name);
+```
+
+### Accessing User Profile
+
+The `profile()` method automatically handles token refresh if your current access token is expired!
+
+```javascript
+try {
+  const profile = await protecx.profile();
+  console.log('User Profile:', profile);
+} catch (error) {
+  console.error('Session expired, please login again.');
 }
+```
+
+---
+
+## 🛠️ Server SDK Usage
+
+Use the server implementation for token verification and route protection.
+
+### Initialization
+
+```javascript
+import { ProtecXServer } from '@protecx/js/server';
+
+const server = new ProtecXServer({
+  publicKeyPEM: `-----BEGIN PUBLIC KEY-----
+...Your RSA Public Key...
+-----END PUBLIC KEY-----`
+});
+```
+
+### Protect Routes with Middleware
+
+If you are using Express or a similar framework, you can use the built-in middleware:
+
+```javascript
+import express from 'express';
+
+const app = express();
+
+app.get('/protected', server.middleware(), (req, res) => {
+  res.json({
+    message: 'Welcome to the secret area!',
+    user: req.user // The decoded JWT claims are available here
+  });
+});
+```
+
+### Manual Token Verification
+
+```javascript
+const claims = server.verifyToken(tokenString);
+if (claims) {
+  console.log('Valid token for user:', claims.userId);
+} else {
+  console.log('Invalid or expired token.');
+}
+```
+
+---
+
+## ⚙️ Configuration Options
+
+| Option | Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `baseUrl` | `string` | **Yes** | The root URL of your ProtecX instance. |
+| `projectId` | `string` | **Yes** | Your unique ProtecX project identifier. |
+| `apiKey` | `string` | **Yes** | API key used for requests from the client. |
+| `persistTokens` | `boolean` | No | Whether to save tokens in `localStorage` (Client only). Defaults to `true`. |
+| `publicKeyPEM` | `string` | **Yes** | Your project's RSA public key in PEM format (Server only). |
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<p align="center">Made with ❤️ by <b>Mudit Garg</b></p>
