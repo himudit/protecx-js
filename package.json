@@ -1,5 +1,5 @@
 {
-  "name": "@protecx/js",
+  "name": "protecx-js",
   "version": "1.0.1",
   "description": "ProtecX JavaScript SDK",
   "type": "module",
