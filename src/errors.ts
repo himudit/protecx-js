@@ -29,14 +29,16 @@ export class ProtecXError extends Error {
      * Checks if the error contains field-level validation errors.
      */
     isValidationError(): boolean {
-        return !!(this.data?.errors && Object.keys(this.data.errors).length > 0);
+        // Look for errors in this.data.errors OR if the code is explicitly VALIDATION_ERROR
+        return !!(this.data?.errors && Object.keys(this.data.errors).length > 0) || this.code === "VALIDATION_ERROR";
     }
 
     /**
-     * Checks if the error is a global error (single error message in data.error).
+     * Checks if the error is a global error (single error message).
+     * Returns true if it's not a validation error, as most other errors are "global".
      */
     isGlobalError(): boolean {
-        return !!this.data?.error;
+        return !!(this.data?.error || !this.isValidationError());
     }
 
     /**
@@ -64,9 +66,8 @@ export class ProtecXError extends Error {
             return this.data.error;
         }
 
-        const fieldErrors = this.getAllFieldErrors();
-        if (Object.keys(fieldErrors).length > 0) {
-            return fieldErrors;
+        if (this.isValidationError()) {
+            return this.getAllFieldErrors();
         }
 
         return this.message;
