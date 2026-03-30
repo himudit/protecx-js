@@ -1,8 +1,20 @@
-# ProtecX-JS 🔐
+# ProtecX-JS <img src="https://img.shields.io/badge/TypeScript-Ready-blue?logo=typescript" />
 
-[![Banner](protecx_banner_1774420591959.png)](https://github.com/himudit/protecx-js)
+![Version](https://img.shields.io/badge/version-1.0.1-green)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 **ProtecX-JS** is a powerful, lightweight JavaScript SDK for both client-side and server-side authentication. It simplifies secure user signups, logins, and profile management with built-in token rotation, automatic refresh logic, and robust verification middleware.
+
+---
+
+## 📚 Table of Contents
+
+- [🚀 Features](#-features)
+- [📦 Installation](#-installation)
+- [🧑‍💻 Client SDK Usage](#-client-sdk-usage)
+- [🛠️ Server SDK Usage](#️-server-sdk-usage)
+- [⚙️ Configuration Options](#️-configuration-options)
+- [📄 License](#-license)
 
 ---
 
@@ -13,20 +25,17 @@
 - **⚙️ Multi-Environment**: Dedicated implementations for both Client (Browsers/Universal) and Server (Node.js).
 - **🛠️ Flexible Config**: Easy setup with customizable base URLs, project IDs, and API keys.
 - **🚀 One-Step Middleware**: Ready-made Express-style middleware for fast server-side protection.
+- **📘 TypeScript Support**: Fully typed for better developer experience and safety.
 
 ---
 
 ## 📦 Installation
 
-To get started, install the package using your favorite package manager:
+Install the package using your favorite package manager:
 
 ```bash
-npm install @protecx/js
-# or
-yarn add @protecx/js
-# or
-pnpm add @protecx/js
-```
+npm install protecx-js
+````
 
 ---
 
@@ -34,22 +43,24 @@ pnpm add @protecx/js
 
 The client SDK is designed to handle all aspects of user authentication on the frontend.
 
-### Initialization
+### 🔧 Initialization
 
-```javascript
-import { ProtecXClient } from '@protecx/js';
+```ts
+import { ProtecXClient } from 'protecx-js/client';
 
-const protecx = new ProtecXClient({
-  baseUrl: 'https://api.protecx.io', // Your ProtecX base URL
-  projectId: 'your_project_id',
-  apiKey: 'your_api_key',
-  persistTokens: true // (Optional) Saves tokens to localStorage
+export const protecx = new ProtecXClient({
+  baseUrl: "https://protecx.onrender.com/api/v1/",
+  projectId: "<PROJECT_ID>",
+  apiKey: "<API_KEY>",
+  persistTokens: true
 });
 ```
 
-### Signup & Login
+---
 
-```javascript
+### 🔐 Signup & Login
+
+```ts
 // Sign up a new user
 const newUser = await protecx.signup({
   email: 'user@example.com',
@@ -66,11 +77,13 @@ const session = await protecx.login({
 console.log('Logged in as:', session.user.name);
 ```
 
-### Accessing User Profile
+---
 
-The `profile()` method automatically handles token refresh if your current access token is expired!
+### 👤 Accessing User Profile
 
-```javascript
+The `profile()` method automatically refreshes tokens if needed:
+
+```ts
 try {
   const profile = await protecx.profile();
   console.log('User Profile:', profile);
@@ -83,12 +96,12 @@ try {
 
 ## 🛠️ Server SDK Usage
 
-Use the server implementation for token verification and route protection.
+Use the server SDK for token verification and securing backend routes.
 
-### Initialization
+### 🔧 Initialization
 
-```javascript
-import { ProtecXServer } from '@protecx/js/server';
+```ts
+import { ProtecXServer } from 'protecx-js/server';
 
 const server = new ProtecXServer({
   publicKeyPEM: `-----BEGIN PUBLIC KEY-----
@@ -97,11 +110,11 @@ const server = new ProtecXServer({
 });
 ```
 
-### Protect Routes with Middleware
+---
 
-If you are using Express or a similar framework, you can use the built-in middleware:
+### 🔒 Protect Routes with Middleware
 
-```javascript
+```ts
 import express from 'express';
 
 const app = express();
@@ -109,15 +122,18 @@ const app = express();
 app.get('/protected', server.middleware(), (req, res) => {
   res.json({
     message: 'Welcome to the secret area!',
-    user: req.user // The decoded JWT claims are available here
+    user: req.user
   });
 });
 ```
 
-### Manual Token Verification
+---
 
-```javascript
+### ✅ Manual Token Verification
+
+```ts
 const claims = server.verifyToken(tokenString);
+
 if (claims) {
   console.log('Valid token for user:', claims.userId);
 } else {
@@ -129,13 +145,13 @@ if (claims) {
 
 ## ⚙️ Configuration Options
 
-| Option | Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `baseUrl` | `string` | **Yes** | The root URL of your ProtecX instance. |
-| `projectId` | `string` | **Yes** | Your unique ProtecX project identifier. |
-| `apiKey` | `string` | **Yes** | API key used for requests from the client. |
-| `persistTokens` | `boolean` | No | Whether to save tokens in `localStorage` (Client only). Defaults to `true`. |
-| `publicKeyPEM` | `string` | **Yes** | Your project's RSA public key in PEM format (Server only). |
+| Option          | Type      | Required | Description                                  |
+| :-------------- | :-------- | :------- | :------------------------------------------- |
+| `baseUrl`       | `string`  | **Yes**  | Root URL of your ProtecX instance            |
+| `projectId`     | `string`  | **Yes**  | Unique project identifier                    |
+| `apiKey`        | `string`  | **Yes**  | API key for client requests                  |
+| `persistTokens` | `boolean` | No       | Store tokens in localStorage (default: true) |
+| `publicKeyPEM`  | `string`  | **Yes**  | RSA public key (Server only)                 |
 
 ---
 
@@ -145,4 +161,11 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
+## 👨‍💻 Contributors
+
+* **Mudit Garg**
+
+---
+
 <p align="center">Made with ❤️ by <b>Mudit Garg</b></p>
+```
